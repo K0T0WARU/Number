@@ -1,2 +1,6 @@
-﻿  Application.cpp
+﻿  Log.cpp
+C:\Users\KOT\YandexDisk\Number\Number\src\Number\Log.h(16,42): warning C4251: 'Number::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'
+C:\Users\KOT\YandexDisk\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
+C:\Users\KOT\YandexDisk\Number\Number\src\Number\Log.h(17,42): warning C4251: 'Number::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'
+C:\Users\KOT\YandexDisk\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
   Number.vcxproj -> C:\Users\KOT\YandexDisk\Number\bin\Debug-x64\Number\Number.dll

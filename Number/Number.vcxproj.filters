@@ -19,16 +19,21 @@
     <ClInclude Include="src\Number\EntryPoint.h">
       <Filter>Number</Filter>
     </ClInclude>
+    <ClInclude Include="src\Number\Event\ApplicationEvent.h">
+      <Filter>Number\Event</Filter>
+    </ClInclude>
     <ClInclude Include="src\Number\Event\Event.h">
       <Filter>Number\Event</Filter>
     </ClInclude>
     <ClInclude Include="src\Number\Event\KeyEvent.h">
       <Filter>Number\Event</Filter>
     </ClInclude>
+    <ClInclude Include="src\Number\Event\MouseEvent.h">
+      <Filter>Number\Event</Filter>
+    </ClInclude>
     <ClInclude Include="src\Number\Log.h">
       <Filter>Number</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\Event\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Number\Application.cpp">

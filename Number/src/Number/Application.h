@@ -2,6 +2,8 @@
 
 #include "Core.h"
 
+#include "Event/Event.h"
+
 namespace Number {
 
 	class NUMBER_API Application

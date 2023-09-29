@@ -13,16 +13,16 @@ namespace Number {
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(const KeyCode keycode)
+		KeyEvent(int keycode)
 			: m_KeyCode(keycode) {}
 
-		KeyCode m_KeyCode;
+		int m_KeyCode;
 	};
 
 	class KeyPressedEvent : public KeyEvent
 	{
     public:
-		KeyPressedEvent(const KeyCode keycode, bool isRepeat = false)
+		KeyPressedEvent(int keycode, bool isRepeat = false)
 			: KeyEvent(keycode), m_IsRepeat(isRepeat) {}
 
         bool IsRepeat() const { return m_IsRepeat; }
@@ -42,7 +42,7 @@ namespace Number {
     class KeyReleasedEvent : public KeyEvent
     {
     public:
-        KeyReleasedEvent(const KeyCode keycode)
+        KeyReleasedEvent(int keycode)
             : KeyEvent(keycode) {}
 
         std::string ToString() const override
@@ -58,7 +58,7 @@ namespace Number {
     class KeyTypedEvent : public KeyEvent
     {
     public:
-        KeyTypedEvent(const KeyCode keycode)
+        KeyTypedEvent(int keycode)
             : KeyEvent(keycode) {}
 
         std::string ToString() const override

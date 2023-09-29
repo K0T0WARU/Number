@@ -9,10 +9,10 @@ namespace Number {
 
 	enum class EventType
 	{
-		None = 0;
-		WindowClone, WindowResize, WindowFocuse, WindowLostFocus, WindowMoved,
+		None = 0,
+		WindowClose, WindowResize, WindowFocuse, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyReleased,
+		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
@@ -20,22 +20,26 @@ namespace Number {
 	{
 		None = 0,
 		EventCategoryApplication = BIT(0),
-		EventCategoryInteger     = BIT(1),
+		EventCategoryInput       = BIT(1),
 		EventCategoryKeyboard    = BIT(2),
 		EventCategoryMouse       = BIT(3),
 		EventCategoryMouseButton = BIT(4)
 	};
 
-#define EVENT_CLASS_TYPE(type)  static EventType GetStaticType() { return EventType::type; }\
+#define EVENT_CLASS_TYPE(type)  static EventType GetStaticType() { return EventType::##type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class NUMBER_API Event
+	class Event
 	{
 		friend class EventDispatcher;
 	public:
+        virtual ~Event() = default;
+
+        bool Handled = false;
+
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;

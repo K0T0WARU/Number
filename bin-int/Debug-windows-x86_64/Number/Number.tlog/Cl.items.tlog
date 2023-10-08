@@ -1,2 +1,6 @@
 C:\Users\KOT\YandexDisk\Number\Number\src\Number\Application.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\Application.obj
+C:\Users\KOT\YandexDisk\Number\Number\src\Number\Layer.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\Layer.obj
+C:\Users\KOT\YandexDisk\Number\Number\src\Number\LayerStack.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\LayerStack.obj
 C:\Users\KOT\YandexDisk\Number\Number\src\Number\Log.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\Log.obj
+C:\Users\KOT\YandexDisk\Number\Number\src\Platform\Windows\WindowsWindow.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\WindowsWindow.obj
+C:\Users\KOT\YandexDisk\Number\Number\src\numpch.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\numpch.obj

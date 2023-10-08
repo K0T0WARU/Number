@@ -10,6 +10,12 @@ workspace "Number"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solutuon directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Number/vendor/GLFW/include"
+
+include "Number/vendor/GLFW"
+
 project "Number"
     location "Number"
     kind "SharedLib"
@@ -17,6 +23,9 @@ project "Number"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+    pchheader "numpch.h"
+    pchsource "Number/src/numpch.cpp"
 
     files
     {
@@ -27,12 +36,21 @@ project "Number"
     includedirs
     {
         "%{prj.name}/vendor/spdlog/include",
-        "%{prj.name}/src"
+        "%{prj.name}/src",
+        "%{IncludeDir.GLFW}"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib",
+        "dwmapi.lib"
     }
 
     filter "system:windows"
         cppdialect "C++20"
-        staticruntime "On"
+        runtime "Debug"
+        staticruntime "off"
         systemversion "latest"
 
         defines
@@ -48,14 +66,17 @@ project "Number"
 
     filter "configurations:Debug"
         defines "NUM_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
         
     filter "configurations:Release"
         defines "NUM_RELEASE"
+        buildoptions "/MD"
         optimize "On"
     
     filter "configurations:Dist"
         defines "NUM_DIST"
+        buildoptions "/MD"
         optimize "On"
 
 project "Sandbox"
@@ -95,12 +116,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "NUM_DEBUG"
+        buildoptions "/MDd"
         symbols "On"
         
     filter "configurations:Release"
         defines "NUM_RELEASE"
+        buildoptions "/MD"
         optimize "On"
 
     filter "configurations:Dist"
         defines "NUM_DIST"
+        buildoptions "/MD"
         optimize "On"

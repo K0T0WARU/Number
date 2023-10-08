@@ -4,8 +4,14 @@
     <Filter Include="Number">
       <UniqueIdentifier>{6E0C54C6-5AAE-7E9C-4369-92F02FAA05ED}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Number\Event">
-      <UniqueIdentifier>{3FA87876-2B0B-081B-D490-40D1C0D2D39D}</UniqueIdentifier>
+    <Filter Include="Number\Events">
+      <UniqueIdentifier>{92B08D45-FE70-097C-C7AB-52F9332B4E58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,28 +25,51 @@
     <ClInclude Include="src\Number\EntryPoint.h">
       <Filter>Number</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\Event\ApplicationEvent.h">
-      <Filter>Number\Event</Filter>
+    <ClInclude Include="src\Number\Events\ApplicationEvent.h">
+      <Filter>Number\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\Event\Event.h">
-      <Filter>Number\Event</Filter>
+    <ClInclude Include="src\Number\Events\Event.h">
+      <Filter>Number\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\Event\KeyEvent.h">
-      <Filter>Number\Event</Filter>
+    <ClInclude Include="src\Number\Events\KeyEvent.h">
+      <Filter>Number\Events</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\Event\MouseEvent.h">
-      <Filter>Number\Event</Filter>
+    <ClInclude Include="src\Number\Events\MouseEvent.h">
+      <Filter>Number\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Layer.h">
+      <Filter>Number</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\LayerStack.h">
+      <Filter>Number</Filter>
     </ClInclude>
     <ClInclude Include="src\Number\Log.h">
       <Filter>Number</Filter>
     </ClInclude>
+    <ClInclude Include="src\Number\Window.h">
+      <Filter>Number</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\numpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Number\Application.cpp">
       <Filter>Number</Filter>
     </ClCompile>
+    <ClCompile Include="src\Number\Layer.cpp">
+      <Filter>Number</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Number\LayerStack.cpp">
+      <Filter>Number</Filter>
+    </ClCompile>
     <ClCompile Include="src\Number\Log.cpp">
       <Filter>Number</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\numpch.cpp" />
   </ItemGroup>
 </Project>

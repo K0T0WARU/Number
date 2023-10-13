@@ -19,32 +19,4 @@ C:\Users\KOT\YandexDisk\Number\Number\src\Number\Log.h(17,42): warning C4251: 'N
 C:\Users\KOT\YandexDisk\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
 C:\Users\KOT\YandexDisk\Number\Number\src\Number\Log.h(18,42): warning C4251: 'Number::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'
 C:\Users\KOT\YandexDisk\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
-  Layer.cpp
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Layer.h(21,21): warning C4251: 'Number::Layer::m_DebugName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Number::Layer'
-C:\Program Edit\VisualStudio 2022\VC\Tools\MSVC\14.37.32822\include\xstring(5119,29): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-  LayerStack.cpp
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Layer.h(21,21): warning C4251: 'Number::Layer::m_DebugName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Number::Layer'
-C:\Program Edit\VisualStudio 2022\VC\Tools\MSVC\14.37.32822\include\xstring(5119,29): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\LayerStack.h(22,29): warning C4251: 'Number::LayerStack::m_Layers': class 'std::vector<Number::Layer *,std::allocator<Number::Layer *>>' needs to have dll-interface to be used by clients of class 'Number::LayerStack'
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\LayerStack.h(19,14): message : see declaration of 'std::vector<Number::Layer *,std::allocator<Number::Layer *>>'
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\LayerStack.h(23,39): warning C4251: 'Number::LayerStack::m_LayerInsert': class 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>' needs to have dll-interface to be used by clients of class 'Number::LayerStack'
-          with
-          [
-              _Ty=Number::Layer *
-          ]
-C:\Program Edit\VisualStudio 2022\VC\Tools\MSVC\14.37.32822\include\vector(605,36): message : see declaration of 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>'
-          with
-          [
-              _Ty=Number::Layer *
-          ]
-  WindowsWindow.cpp
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Log.h(17,42): warning C4251: 'Number::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'
-C:\Users\KOT\YandexDisk\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Log.h(18,42): warning C4251: 'Number::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'
-C:\Users\KOT\YandexDisk\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Events\KeyEvent.h(7,37): warning C4275: non dll-interface class 'Number::Event' used as base for dll-interface class 'Number::KeyEvent'
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Events\Event.h(32,8): message : see declaration of 'Number::Event'
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Events\KeyEvent.h(7,19): message : see declaration of 'Number::KeyEvent'
-  Generating Code...
-     Creating library ..\bin\Debug-windows-x86_64\Number\Number.lib and object ..\bin\Debug-windows-x86_64\Number\Number.exp
-  Number.vcxproj -> C:\Users\KOT\YandexDisk\Number\bin\Debug-windows-x86_64\Number\Number.dll
+C:\Users\KOT\YandexDisk\Number\Number\src\Number\Application.cpp(24,5): error C2143: syntax error: missing ';' before '}'

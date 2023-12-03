@@ -14,8 +14,8 @@ C:\Program Edit\VisualStudio 2022\VC\Tools\MSVC\14.37.32822\include\vector(605,3
           [
               _Ty=Number::Layer *
           ]
-C:\GameDev\Number\Number\src\Number\Application.h(27,33): warning C4251: 'Number::Application::m_Window': class 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>' needs to have dll-interface to be used by clients of class 'Number::Application'
-C:\GameDev\Number\Number\src\Number\Application.h(27,14): message : see declaration of 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>'
+C:\GameDev\Number\Number\src\Number\Application.h(31,33): warning C4251: 'Number::Application::m_Window': class 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>' needs to have dll-interface to be used by clients of class 'Number::Application'
+C:\GameDev\Number\Number\src\Number\Application.h(31,14): message : see declaration of 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>'
 C:\GameDev\Number\Number\src\Number\Log.h(17,42): warning C4251: 'Number::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'
 C:\GameDev\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
 C:\GameDev\Number\Number\src\Number\Log.h(18,42): warning C4251: 'Number::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'

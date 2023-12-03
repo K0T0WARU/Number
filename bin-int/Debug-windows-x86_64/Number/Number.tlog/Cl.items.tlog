@@ -1,6 +1,8 @@
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Application.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\Application.obj
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Layer.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\Layer.obj
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\LayerStack.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\LayerStack.obj
-C:\Users\KOT\YandexDisk\Number\Number\src\Number\Log.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\Log.obj
-C:\Users\KOT\YandexDisk\Number\Number\src\Platform\Windows\WindowsWindow.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\WindowsWindow.obj
-C:\Users\KOT\YandexDisk\Number\Number\src\numpch.cpp;C:\Users\KOT\YandexDisk\Number\bin-int\Debug-windows-x86_64\Number\numpch.obj
+C:\GameDev\Number\Number\src\Number\Application.cpp;C:\GameDev\Number\bin-int\Debug-windows-x86_64\Number\Application.obj
+C:\GameDev\Number\Number\src\Number\ImGui\ImGuiLayer.cpp;C:\GameDev\Number\bin-int\Debug-windows-x86_64\Number\ImGuiLayer.obj
+C:\GameDev\Number\Number\src\Number\Layer.cpp;C:\GameDev\Number\bin-int\Debug-windows-x86_64\Number\Layer.obj
+C:\GameDev\Number\Number\src\Number\LayerStack.cpp;C:\GameDev\Number\bin-int\Debug-windows-x86_64\Number\LayerStack.obj
+C:\GameDev\Number\Number\src\Number\Log.cpp;C:\GameDev\Number\bin-int\Debug-windows-x86_64\Number\Log.obj
+C:\GameDev\Number\Number\src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp;C:\GameDev\Number\bin-int\Debug-windows-x86_64\Number\ImGuiOpenGLRenderer.obj
+C:\GameDev\Number\Number\src\Platform\Windows\WindowsWindow.cpp;C:\GameDev\Number\bin-int\Debug-windows-x86_64\Number\WindowsWindow.obj
+C:\GameDev\Number\Number\src\numpch.cpp;C:\GameDev\Number\bin-int\Debug-windows-x86_64\Number\numpch.obj

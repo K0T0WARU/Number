@@ -1,3 +1,9 @@
 [submodule "Number/vendor/spdlog"]
 	path = Number/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Number/vendor/GLFW"]
+	path = Number/vendor/GLFW
+	url = https://github.com/K0T0WARU/glfw
+[submodule "Number/vendor/ImGui"]
+	path = Number/vendor/ImGui
+	url = https://github.com/K0T0WARU/imgui

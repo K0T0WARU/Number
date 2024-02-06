@@ -1,9 +1,0 @@
-{
-    "Version": "1.1",
-    "Data": {
-        "Source": "c:\\gamedev\\projects\\number\\number\\src\\number\\imgui\\imguiglfw.ixx",
-        "ProvidedModule": "ImGuiGLFW",
-        "ImportedModules": [],
-        "ImportedHeaderUnits": []
-    }
-}

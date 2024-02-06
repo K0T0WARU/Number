@@ -8,12 +8,14 @@ namespace Number
     {
     public:
         ImGuiLayer();
-        ~ImGuiLayer();
+        ~ImGuiLayer() = default;
 
-        void OnAttach();
-        void OnDetach();
-        void OnUpdate();
-        void OnEvent(Event& event);
+        virtual void OnAttach() override;
+        virtual void OnDetach() override;
+        virtual void OnImGuiRenderer() override;
+
+        void Begin();
+        void End();
     private:
         float m_Time = 0.0f;
     };

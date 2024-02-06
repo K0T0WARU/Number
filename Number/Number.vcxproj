@@ -170,8 +170,6 @@
     <ClInclude Include="src\Number\LayerStack.h" />
     <ClInclude Include="src\Number\Log.h" />
     <ClInclude Include="src\Number\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRendererLoader.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\numpch.h" />
   </ItemGroup>
@@ -181,7 +179,6 @@
     <ClCompile Include="src\Number\Layer.cpp" />
     <ClCompile Include="src\Number\LayerStack.cpp" />
     <ClCompile Include="src\Number\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\numpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

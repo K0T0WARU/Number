@@ -14,5 +14,8 @@ C:\GameDev\Projects\Number\Number\src\Number\Application.h(33,33): warning C4251
   C:\GameDev\Projects\Number\Number\src\Number\Application.h(33,14):
   see declaration of 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>'
   
+<<<<<<< HEAD
      Creating library ..\bin\Debug-windows-x86_64\Number\Number.lib and object ..\bin\Debug-windows-x86_64\Number\Number.exp
+=======
+>>>>>>> 572e0859a86d6cb853383b4e455920f9872e1f79
   Number.vcxproj -> C:\GameDev\Projects\Number\bin\Debug-windows-x86_64\Number\Number.dll

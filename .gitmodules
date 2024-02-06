@@ -4,6 +4,9 @@
 [submodule "Number/vendor/GLFW"]
 	path = Number/vendor/GLFW
 	url = https://github.com/K0T0WARU/glfw
-[submodule "Number/vendor/ImGui"]
-	path = Number/vendor/ImGui
+[submodule "Number/vendor/imgui"]
+	path = Number/vendor/imgui
 	url = https://github.com/K0T0WARU/imgui
+[submodule "Number/vendor/glfw"]
+	path = Number/vendor/glfw
+	url = https://github.com/K0T0WARU/glfw

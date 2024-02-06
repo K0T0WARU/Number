@@ -11,12 +11,11 @@ public:
 
     void OnUpdate() override
     {
-        NUM_INFO("ExampleLayer::Update");
     }
 
     void OnEvent(Number::Event& event) override
     {
-        NUM_TRACE("{0}", event);
+        //NUM_TRACE("{0}", event);
     }
 };
 
@@ -26,7 +25,6 @@ public:
 	Sandbox() 
     {
         PushLayer(new ExampleLayer());
-        PushOverlay(new Number::ImGuiLayer());
 	}
 
 	~Sandbox() 

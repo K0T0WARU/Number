@@ -1,43 +1,17 @@
-﻿  Application.cpp
-C:\GameDev\Number\Number\src\Number\Layer.h(21,21): warning C4251: 'Number::Layer::m_DebugName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Number::Layer'
-C:\Program Edit\VisualStudio 2022\VC\Tools\MSVC\14.37.32822\include\xstring(5119,29): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-C:\GameDev\Number\Number\src\Number\LayerStack.h(22,29): warning C4251: 'Number::LayerStack::m_Layers': class 'std::vector<Number::Layer *,std::allocator<Number::Layer *>>' needs to have dll-interface to be used by clients of class 'Number::LayerStack'
-C:\GameDev\Number\Number\src\Number\LayerStack.h(19,14): message : see declaration of 'std::vector<Number::Layer *,std::allocator<Number::Layer *>>'
-C:\GameDev\Number\Number\src\Number\LayerStack.h(23,39): warning C4251: 'Number::LayerStack::m_LayerInsert': class 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>' needs to have dll-interface to be used by clients of class 'Number::LayerStack'
-          with
-          [
-              _Ty=Number::Layer *
-          ]
-C:\Program Edit\VisualStudio 2022\VC\Tools\MSVC\14.37.32822\include\vector(605,36): message : see declaration of 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>'
-          with
-          [
-              _Ty=Number::Layer *
-          ]
-C:\GameDev\Number\Number\src\Number\Application.h(31,33): warning C4251: 'Number::Application::m_Window': class 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>' needs to have dll-interface to be used by clients of class 'Number::Application'
-C:\GameDev\Number\Number\src\Number\Application.h(31,14): message : see declaration of 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>'
-C:\GameDev\Number\Number\src\Number\Log.h(17,42): warning C4251: 'Number::Log::s_CoreLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'
-C:\GameDev\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
-C:\GameDev\Number\Number\src\Number\Log.h(18,42): warning C4251: 'Number::Log::s_ClientLogger': class 'std::shared_ptr<spdlog::logger>' needs to have dll-interface to be used by clients of class 'Number::Log'
-C:\GameDev\Number\Number\vendor\spdlog\include\spdlog\details\registry.h(34,31): message : see declaration of 'std::shared_ptr<spdlog::logger>'
-  ImGuiLayer.cpp
-C:\GameDev\Number\Number\src\Number\Layer.h(21,21): warning C4251: 'Number::Layer::m_DebugName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Number::Layer'
-C:\Program Edit\VisualStudio 2022\VC\Tools\MSVC\14.37.32822\include\xstring(5119,29): message : see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
-C:\GameDev\Number\Number\src\Number\LayerStack.h(22,29): warning C4251: 'Number::LayerStack::m_Layers': class 'std::vector<Number::Layer *,std::allocator<Number::Layer *>>' needs to have dll-interface to be used by clients of class 'Number::LayerStack'
-C:\GameDev\Number\Number\src\Number\LayerStack.h(19,14): message : see declaration of 'std::vector<Number::Layer *,std::allocator<Number::Layer *>>'
-C:\GameDev\Number\Number\src\Number\LayerStack.h(23,39): warning C4251: 'Number::LayerStack::m_LayerInsert': class 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>' needs to have dll-interface to be used by clients of class 'Number::LayerStack'
-          with
-          [
-              _Ty=Number::Layer *
-          ]
-C:\Program Edit\VisualStudio 2022\VC\Tools\MSVC\14.37.32822\include\vector(605,36): message : see declaration of 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>'
-          with
-          [
-              _Ty=Number::Layer *
-          ]
-C:\GameDev\Number\Number\src\Number\Application.h(31,33): warning C4251: 'Number::Application::m_Window': class 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>' needs to have dll-interface to be used by clients of class 'Number::Application'
-C:\GameDev\Number\Number\src\Number\Application.h(31,14): message : see declaration of 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>'
-C:\GameDev\Number\Number\src\Number\ImGui\ImGuiLayer.cpp(47,86): warning C4244: 'argument': conversion from 'uint32_t' to 'float', possible loss of data
-C:\GameDev\Number\Number\src\Number\ImGui\ImGuiLayer.cpp(47,57): warning C4244: 'argument': conversion from 'uint32_t' to 'float', possible loss of data
-  Generating Code...
-     Creating library ..\bin\Debug-windows-x86_64\Number\Number.lib and object ..\bin\Debug-windows-x86_64\Number\Number.exp
-  Number.vcxproj -> C:\GameDev\Number\bin\Debug-windows-x86_64\Number\Number.dll
+﻿  ImGuiLayer.cpp
+C:\GameDev\Projects\Number\Number\src\Number\Layer.h(22,21): warning C4251: 'Number::Layer::m_DebugName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Number::Layer'
+  (compiling source file '/src/Number/ImGui/ImGuiLayer.cpp')
+  C:\Programming\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(5127,29):
+  see declaration of 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>'
+  
+C:\GameDev\Projects\Number\Number\src\Number\LayerStack.h(22,29): warning C4251: 'Number::LayerStack::m_Layers': class 'std::vector<Number::Layer *,std::allocator<Number::Layer *>>' needs to have dll-interface to be used by clients of class 'Number::LayerStack'
+  (compiling source file '/src/Number/ImGui/ImGuiLayer.cpp')
+  C:\GameDev\Projects\Number\Number\src\Number\LayerStack.h(19,14):
+  see declaration of 'std::vector<Number::Layer *,std::allocator<Number::Layer *>>'
+  
+C:\GameDev\Projects\Number\Number\src\Number\Application.h(33,33): warning C4251: 'Number::Application::m_Window': class 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>' needs to have dll-interface to be used by clients of class 'Number::Application'
+  (compiling source file '/src/Number/ImGui/ImGuiLayer.cpp')
+  C:\GameDev\Projects\Number\Number\src\Number\Application.h(33,14):
+  see declaration of 'std::unique_ptr<Number::Window,std::default_delete<Number::Window>>'
+  
+  Number.vcxproj -> C:\GameDev\Projects\Number\bin\Debug-windows-x86_64\Number\Number.dll

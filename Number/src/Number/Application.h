@@ -7,6 +7,8 @@
 #include "Number/Events/Event.h"
 #include "Number/Events/ApplicationEvent.h"
 
+#include "Number/ImGui/ImGuiLayer.h"
+
 namespace Number {
 
 	class NUMBER_API Application
@@ -29,6 +31,7 @@ namespace Number {
         bool OnWindowClosed(WindowCloseEvent& e);
 
         std::unique_ptr<Window> m_Window;
+        ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
         LayerStack m_LayerStack;
 

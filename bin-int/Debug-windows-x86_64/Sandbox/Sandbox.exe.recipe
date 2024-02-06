@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\GameDev\Number\bin\Debug-windows-x86_64\Number\Number.dll</FullPath>
+      <FullPath>C:\GameDev\Projects\Number\bin\Debug-windows-x86_64\Number\Number.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\GameDev\Number\bin\Debug-windows-x86_64\Sandbox\Sandbox.exe</FullPath>
+      <FullPath>C:\GameDev\Projects\Number\bin\Debug-windows-x86_64\Sandbox\Sandbox.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

@@ -1,5 +1,6 @@
 workspace "Number"
     architecture "x64"
+    startproject "Sandbox"
 
     configurations
     {
@@ -24,6 +25,7 @@ project "Number"
     location "Number"
     kind "SharedLib"
     language "C++"
+    staticruntime "off"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -57,8 +59,6 @@ project "Number"
 
     filter "system:windows"
         cppdialect "C++20"
-        runtime "Debug"
-        staticruntime "off"
         systemversion "latest"
 
         defines
@@ -70,28 +70,29 @@ project "Number"
 
         postbuildcommands
         {
-            ("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+            ("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
         }
 
     filter "configurations:Debug"
         defines "NUM_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
         
     filter "configurations:Release"
         defines "NUM_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
     
     filter "configurations:Dist"
         defines "NUM_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -115,7 +116,6 @@ project "Sandbox"
 
     filter "system:windows"
         cppdialect "C++20"
-        staticruntime "On"
         systemversion "latest"
 
         defines
@@ -125,15 +125,15 @@ project "Sandbox"
 
     filter "configurations:Debug"
         defines "NUM_DEBUG"
-        buildoptions "/MDd"
+        runtime "Debug"
         symbols "On"
         
     filter "configurations:Release"
         defines "NUM_RELEASE"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"
 
     filter "configurations:Dist"
         defines "NUM_DIST"
-        buildoptions "/MD"
+        runtime "Release"
         optimize "On"

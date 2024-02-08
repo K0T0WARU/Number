@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿  Sandbox.vcxproj -> C:\GameDev\Projects\Number\bin\Debug-windows-x86_64\Sandbox\Sandbox.exe
-=======
-﻿cl : command line  warning D9025: overriding '/MTd' with '/MDd'
-  SandboxApp.cpp
+﻿  SandboxApp.cpp
 C:\GameDev\Projects\Number\Number\src\Number\Layer.h(22,21): warning C4251: 'Number::Layer::m_DebugName': class 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' needs to have dll-interface to be used by clients of class 'Number::Layer'
   (compiling source file 'src/SandboxApp.cpp')
   C:\Programming\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\xstring(5127,29):
@@ -903,4 +899,3 @@ C:\Programming\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\
           ]
   
   Sandbox.vcxproj -> C:\GameDev\Projects\Number\bin\Debug-windows-x86_64\Sandbox\Sandbox.exe
->>>>>>> 572e0859a86d6cb853383b4e455920f9872e1f79

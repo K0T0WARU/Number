@@ -11,6 +11,8 @@ public:
 
     void OnUpdate() override
     {
+        if (Number::Input::IsKeyPresed(NUM_KEY_TAB))
+            NUM_INFO("Tab key is pressed!");
     }
 
     void OnEvent(Number::Event& event) override

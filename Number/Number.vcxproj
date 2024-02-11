@@ -161,10 +161,14 @@
     <ClInclude Include="src\Number\Events\KeyEvent.h" />
     <ClInclude Include="src\Number\Events\MouseEvent.h" />
     <ClInclude Include="src\Number\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Number\Input.h" />
+    <ClInclude Include="src\Number\KeyCodes.h" />
     <ClInclude Include="src\Number\Layer.h" />
     <ClInclude Include="src\Number\LayerStack.h" />
     <ClInclude Include="src\Number\Log.h" />
+    <ClInclude Include="src\Number\MouseButtonCodes.h" />
     <ClInclude Include="src\Number\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\numpch.h" />
   </ItemGroup>
@@ -174,6 +178,7 @@
     <ClCompile Include="src\Number\Layer.cpp" />
     <ClCompile Include="src\Number\LayerStack.cpp" />
     <ClCompile Include="src\Number\Log.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\numpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

@@ -10,3 +10,6 @@
 [submodule "Number/vendor/glfw"]
 	path = Number/vendor/glfw
 	url = https://github.com/K0T0WARU/glfw
+[submodule "Number/vendor/glm"]
+	path = Number/vendor/glm
+	url = https://github.com/g-truc/glm

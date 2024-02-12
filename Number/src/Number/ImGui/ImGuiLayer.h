@@ -4,7 +4,7 @@
 
 namespace Number
 {
-    class NUMBER_API ImGuiLayer : public Layer
+    class ImGuiLayer : public Layer
     {
     public:
         ImGuiLayer();
@@ -12,7 +12,7 @@ namespace Number
 
         virtual void OnAttach() override;
         virtual void OnDetach() override;
-        virtual void OnImGuiRenderer() override;
+        virtual void OnImGuiRender() override;
 
         void Begin();
         void End();

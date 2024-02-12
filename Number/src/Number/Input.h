@@ -4,7 +4,7 @@
 
 namespace Number {
 
-    class NUMBER_API Input
+    class Input
     {
     public:
         inline static bool IsKeyPresed(int keycode) { return s_Instance->IsKeyPressedImpl(keycode); }

@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Number/vendor/GLFW/include"
 IncludeDir["Glad"] = "Number/vendor/Glad/include"
 IncludeDir["ImGui"] = "Number/vendor/ImGui"
+IncludeDir["glm"] = "Number/vendor/glm"
 
 include "Number/vendor/GLFW"
 include "Number/vendor/Glad"
@@ -23,9 +24,10 @@ include "Number/vendor/ImGui"
 
 project "Number"
     location "Number"
-    kind "SharedLib"
+    kind "StaticLib"
     language "C++"
-    staticruntime "off"
+    cppdialect "C++17"
+    staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
     objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -36,7 +38,9 @@ project "Number"
     files
     {
         "%{prj.name}/src/**.h",
-        "%{prj.name}/src/**.cpp"
+        "%{prj.name}/src/**.cpp",
+        "%{prj.name}/vendor/glm/glm/**.hpp",
+        "%{prj.name}/vendor/glm/glm/**.inl"
     }
 
     includedirs
@@ -45,7 +49,8 @@ project "Number"
         "%{prj.name}/src",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
-        "%{IncludeDir.ImGui}"
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -58,14 +63,14 @@ project "Number"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
         systemversion "latest"
 
         defines
         {
             "NUM_PLATFORM_WINDOWS",
             "NUM_BUILD_DLL",
-            "GLFW_INCLUDE_NONE"
+            "GLFW_INCLUDE_NONE",
+            "_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS"
         }
 
         postbuildcommands
@@ -76,22 +81,23 @@ project "Number"
     filter "configurations:Debug"
         defines "NUM_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
         
     filter "configurations:Release"
         defines "NUM_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
     
     filter "configurations:Dist"
         defines "NUM_DIST"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
 project "Sandbox"
     location "Sandbox"
     kind "ConsoleApp"
     language "C++"
+    cppdialect "C++17"
     staticruntime "on"
 
     targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -106,7 +112,9 @@ project "Sandbox"
     includedirs
     {
         "Number/vendor/spdlog/include",
-        "Number/src"
+        "Number/src",
+        "%{IncludeDir.ImGui}",
+        "%{IncludeDir.glm}"
     }
 
     links
@@ -115,25 +123,25 @@ project "Sandbox"
     }
 
     filter "system:windows"
-        cppdialect "C++20"
         systemversion "latest"
 
         defines
         {
-            "NUM_PLATFORM_WINDOWS"
+            "NUM_PLATFORM_WINDOWS",
+            "_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS"
         }
 
     filter "configurations:Debug"
         defines "NUM_DEBUG"
         runtime "Debug"
-        symbols "On"
+        symbols "on"
         
     filter "configurations:Release"
         defines "NUM_RELEASE"
         runtime "Release"
-        optimize "On"
+        optimize "on"
 
     filter "configurations:Dist"
         defines "NUM_DIST"
         runtime "Release"
-        optimize "On"
+        optimize "on"

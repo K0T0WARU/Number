@@ -58,7 +58,7 @@ namespace Number {
         {
             m_ImGuiLayer->Begin();
             for (Layer* layer : m_LayerStack)
-                layer->OnImGuiRenderer();
+                layer->OnImGuiRender();
             m_ImGuiLayer->End();
 
             for (Layer* layer : m_LayerStack)

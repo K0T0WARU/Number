@@ -54,7 +54,7 @@ namespace Number
         ImGui::NewFrame();
     }
 
-    void ImGuiLayer::OnImGuiRenderer()
+    void ImGuiLayer::OnImGuiRender()
     {
         static bool show = true;
         ImGui::ShowDemoWindow(&show);

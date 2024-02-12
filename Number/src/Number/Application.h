@@ -11,7 +11,7 @@
 
 namespace Number {
 
-	class NUMBER_API Application
+	class Application
 	{
 	public:
 		Application();

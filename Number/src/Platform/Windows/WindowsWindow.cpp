@@ -5,9 +5,9 @@
 #include "Number/Events/MouseEvent.h"
 #include "Number/Events/ApplicationEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
-#include "Number/Core.h"
+#include <glad/glad.h>
 
 namespace Number {
 
@@ -52,13 +52,16 @@ namespace Number {
         }
 
         m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+
+        m_Context = new OpenGLContext(m_Window);
+        m_Context->Init();
+
         glfwMakeContextCurrent(m_Window);
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         NUM_CORE_ASSERT(status, "Failed to initailize Glad!");
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
 
-        // Set GLFW callbacks
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height)
             {
                 WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
@@ -156,7 +159,7 @@ namespace Number {
     void WindowsWindow::OnUpdate()
     {
         glfwPollEvents();
-        glfwSwapBuffers(m_Window);
+        m_Context->SwapBuffers();
     }
 
     void WindowsWindow::SetVSync(bool enabled)

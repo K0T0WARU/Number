@@ -9,6 +9,8 @@
 
 #include "Number/ImGui/ImGuiLayer.h"
 
+#include "Number/Renderer/Shader.h"
+
 namespace Number {
 
 	class Application
@@ -35,6 +37,8 @@ namespace Number {
         bool m_Running = true;
         LayerStack m_LayerStack;
 
+        unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+        std::unique_ptr<Shader> m_Shader;
     private:
         static Application* s_Instance;
 	};

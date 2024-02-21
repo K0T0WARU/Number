@@ -67,23 +67,24 @@ namespace Number {
         // Now time to link them together into a program.
         // Get a program object.
         m_RendererID = glCreateProgram();
+        GLuint program = m_RendererID;
 
-        glAttachShader(m_RendererID, vertexShader);
-        glAttachShader(m_RendererID, fragmentShader);
+        glAttachShader(program, vertexShader);
+        glAttachShader(program, fragmentShader);
 
-        glLinkProgram(m_RendererID);
+        glLinkProgram(program);
 
         GLint isLinked = 0;
-        glGetProgramiv(m_RendererID, GL_LINK_STATUS, (int *)&isLinked);
+        glGetProgramiv(program, GL_LINK_STATUS, (int *)&isLinked);
         if (isLinked == GL_FALSE)
         {
             GLint maxLength = 0;
-            glGetProgramiv(m_RendererID, GL_INFO_LOG_LENGTH, &maxLength);
+            glGetProgramiv(program, GL_INFO_LOG_LENGTH, &maxLength);
 
             std::vector<GLchar> infoLog(maxLength);
-            glGetProgramInfoLog(m_RendererID, maxLength, &maxLength, &infoLog[0]);
+            glGetProgramInfoLog(program, maxLength, &maxLength, &infoLog[0]);
 
-            glDeleteProgram(m_RendererID);
+            glDeleteProgram(program);
             glDeleteShader(vertexShader);
             glDeleteShader(fragmentShader);
 
@@ -93,8 +94,8 @@ namespace Number {
         }
 
         // Always detach shaders after a successful link.
-        glDetachShader(m_RendererID, vertexShader);
-        glDetachShader(m_RendererID, fragmentShader);
+        glDetachShader(program, vertexShader);
+        glDetachShader(program, fragmentShader);
     }
 
     Shader::~Shader()

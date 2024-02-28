@@ -1,6 +1,4 @@
 #pragma once
-
-#include "Number/Core.h"
 #include "Layer.h"
 
 namespace Number {

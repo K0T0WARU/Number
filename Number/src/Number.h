@@ -9,8 +9,4 @@
 #include "Number/MouseButtonCodes.h"
 #include "Number/KeyCodes.h"
 
-#include "Number/Log.h"
-
-#include "Number/Core.h"
-
 #include "Number/EntryPoint.h"

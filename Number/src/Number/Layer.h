@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Number/Core.h"
 #include "Number/Events/Event.h"
 
 namespace Number {

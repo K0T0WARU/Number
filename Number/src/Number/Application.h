@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Core.h"
-
 #include "Window.h"
 #include "Number/LayerStack.h"
 #include "Number/Events/Event.h"
@@ -11,6 +9,7 @@
 
 #include "Number/Renderer/Shader.h"
 #include "Number/Renderer/Buffer.h"
+#include "Number/Renderer/VertexArray.h"
 
 namespace Number {
 
@@ -38,10 +37,11 @@ namespace Number {
         bool m_Running = true;
         LayerStack m_LayerStack;
 
-        unsigned int m_VertexArray;
-        std::unique_ptr<Shader> m_Shader;
-        std::unique_ptr<VertexBuffer> m_VertexBuffer;
-        std::unique_ptr<IndexBuffer> m_IndexBuffer;
+        std::shared_ptr<Shader> m_Shader;
+        std::shared_ptr<VertexArray> m_VertexArray;
+
+        std::shared_ptr<Shader> m_SquareShader;
+        std::shared_ptr<VertexArray> m_SquareVertexArray;
     private:
         static Application* s_Instance;
 	};

@@ -2,7 +2,6 @@
 #include "Shader.h"
 
 #include <glad/glad.h>
-#include "Number/Log.h"
 
 namespace Number {
 

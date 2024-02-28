@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Number/Core.h"
-
 namespace Number {
 
 	enum class EventType

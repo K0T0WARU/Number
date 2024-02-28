@@ -12,7 +12,6 @@
 
 #include <gl/GL.h>
 
-
 #include "Number/Application.h"
 
 namespace Number

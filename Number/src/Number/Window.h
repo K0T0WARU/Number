@@ -2,7 +2,6 @@
 
 #include "numpch.h"
 
-#include "Number/Core.h"
 #include "Events/Event.h"
 
 namespace Number {

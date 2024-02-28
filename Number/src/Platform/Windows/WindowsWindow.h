@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Number/Window.h"
-#include "Number/Log.h"
 
 #include "Number/Renderer/GraphicsContext.h"
 

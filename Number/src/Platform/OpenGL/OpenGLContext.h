@@ -1,6 +1,4 @@
 #pragma once
-#include "Number/Log.h"
-
 #include "Number/Renderer/GraphicsContext.h"
 
 struct GLFWwindow;

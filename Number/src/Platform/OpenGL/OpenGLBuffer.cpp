@@ -6,7 +6,7 @@
 namespace Number {
 
     // Vertex Buffer
-    ////
+    // {
 
     OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
     {
@@ -30,10 +30,10 @@ namespace Number {
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
-    ////
+    // }
     
     // Index Buffer
-    ////
+    // {
 
     OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
         : m_Count(count)
@@ -58,6 +58,6 @@ namespace Number {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
-    ////
+    // }
 
 }

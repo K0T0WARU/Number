@@ -3,7 +3,12 @@
 
 #include "Number/Events/ApplicationEvent.h"
 
+#include "Number/Renderer/Renderer.h"
+#include "Number/Renderer/RenderCommand.h"
+
 #include <glad/glad.h>
+
+// TODO: Убрать все include в .h файлах
 
 namespace Number {
 
@@ -169,16 +174,18 @@ namespace Number {
 	void Application::Run() {
         while (m_Running)
         {
-            glClearColor(0.1f, 0.1f, 0.1f, 1);
-            glClear(GL_COLOR_BUFFER_BIT);
+            RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+            RenderCommand::Clear();
+
+            Renderer::BeginScene();
 
             m_SquareShader->Bind();
-            m_SquareVertexArray->Bind();
-            glDrawElements(GL_TRIANGLES, m_SquareVertexArray->GetIndexBuffers()->GetCount(), GL_UNSIGNED_INT, nullptr);
+            Renderer::Submit(m_SquareVertexArray);
 
             m_Shader->Bind();
-            m_VertexArray->Bind();
-            glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffers()->GetCount(), GL_UNSIGNED_INT, nullptr);
+            Renderer::Submit(m_VertexArray);
+
+            Renderer::EndScene();
 
             m_ImGuiLayer->Begin();
             for (Layer* layer : m_LayerStack)

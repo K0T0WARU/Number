@@ -1,18 +1,16 @@
 #pragma once
 
-namespace Number {
+#include "Number/Renderer/VertexArray.h"
 
-    enum class RendererAPI
-    {
-        None = 0, OpenGL = 1
-    };
+namespace Number {
 
     class Renderer
     {
     public:
-        inline static RendererAPI GetAPI() { return s_RendererAPI; }
-    private:
-        static RendererAPI s_RendererAPI;
+        static void BeginScene();
+        static void EndScene();
+
+        static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
     };
 
 }

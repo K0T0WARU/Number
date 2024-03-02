@@ -11,6 +11,8 @@
 #include "Number/Renderer/Buffer.h"
 #include "Number/Renderer/VertexArray.h"
 
+#include "Number/Renderer/OrthographicCamera.h"
+
 namespace Number {
 
 	class Application
@@ -42,6 +44,8 @@ namespace Number {
 
         std::shared_ptr<Shader> m_SquareShader;
         std::shared_ptr<VertexArray> m_SquareVertexArray;
+
+        OrthographicCamera m_Camera;
     private:
         static Application* s_Instance;
 	};

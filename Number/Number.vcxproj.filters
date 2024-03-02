@@ -1386,6 +1386,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\Number\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Number\Application.cpp">
@@ -1442,5 +1443,6 @@
     <ClCompile Include="src\numpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Number\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

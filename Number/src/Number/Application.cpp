@@ -8,8 +8,6 @@
 
 #include <glad/glad.h>
 
-// TODO: Убрать все include в .h файлах
-
 namespace Number {
 
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -17,6 +15,7 @@ namespace Number {
     Application* Application::s_Instance = nullptr;
 
 	Application::Application() 
+        : m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
     {
         NUM_CORE_ASSERT(!s_Instance, "Application already exists");
         s_Instance = this;
@@ -57,10 +56,10 @@ namespace Number {
         m_SquareVertexArray.reset(VertexArray::Create());
 
         float squareVertices[4 * 3] = {
-            -0.5f, -0.5f, 0.0f,
-             0.5f, -0.5f, 0.0f,
-             0.5f,  0.5f, 0.0f,
-            -0.5f,  0.5f, 0.0f
+            -0.8f, -0.8f, 0.0f,
+             0.8f, -0.8f, 0.0f,
+             0.8f,  0.8f, 0.0f,
+            -0.8f,  0.8f, 0.0f
         };
 
         BufferLayout squareLayout = {
@@ -85,6 +84,8 @@ namespace Number {
             layout(location = 0) in vec3 a_Position;
             layout(location = 1) in vec4 a_Color;
             
+            uniform mat4 u_ViewProjectionMatrix;
+
             out vec3 v_Position;
             out vec4 v_Color;
             
@@ -92,7 +93,7 @@ namespace Number {
             {
                 v_Position = a_Position;
                 v_Color = a_Color;
-                gl_Position = vec4(a_Position, 1.0); 
+                gl_Position = u_ViewProjectionMatrix * vec4(a_Position, 1.0); 
             }  
         )";
 
@@ -117,12 +118,14 @@ namespace Number {
             
             layout(location = 0) in vec3 a_Position;
             
+            uniform mat4 u_ViewProjectionMatrix;
+
             out vec3 v_Position;
             
             void main()
             {
                 v_Position = a_Position;
-                gl_Position = vec4(a_Position, 1.0); 
+                gl_Position = u_ViewProjectionMatrix * vec4(a_Position, 1.0); 
             }  
         )";
 
@@ -130,12 +133,12 @@ namespace Number {
             #version 430 core
             
             layout(location = 0) out vec4 color;
-            
+
             in vec3 v_Position;
 
             void main()
             {
-                color = vec4(0.2, 0.8, 0.2, 1.0);
+                color = vec4(0.2f, 0.2f, 0.5f, 1.0f);
             }  
         )";
 
@@ -175,15 +178,15 @@ namespace Number {
         while (m_Running)
         {
             RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-            RenderCommand::Clear();
+            RenderCommand::Clear(); 
 
-            Renderer::BeginScene();
+            Renderer::BeginScene(m_Camera);
 
-            m_SquareShader->Bind();
-            Renderer::Submit(m_SquareVertexArray);
+            m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
+            m_Camera.SetRotation(45.0f);
 
-            m_Shader->Bind();
-            Renderer::Submit(m_VertexArray);
+            Renderer::Submit(m_SquareShader, m_SquareVertexArray);
+            Renderer::Submit(m_Shader, m_VertexArray);
 
             Renderer::EndScene();
 

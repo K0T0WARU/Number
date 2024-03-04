@@ -13,6 +13,8 @@
 
 #include "Number/Renderer/OrthographicCamera.h"
 
+#include "Number/Core/Timestep.h"
+
 namespace Number {
 
 	class Application
@@ -33,11 +35,15 @@ namespace Number {
 
     private:
         bool OnWindowClosed(WindowCloseEvent& e);
-
+    private:
         std::unique_ptr<Window> m_Window;
         ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
         LayerStack m_LayerStack;
+
+        Timestep m_Timestep;
+        float m_LastFrameTime = 0.0f;
+        float m_CurrentTime = 0.0f;
     private:
         static Application* s_Instance;
 	};

@@ -6,7 +6,10 @@
 #include "Number/Renderer/Renderer.h"
 #include "Number/Renderer/RenderCommand.h"
 
+#include "Platform/Platform.h"
+
 #include <glad/glad.h>
+#include <glfw/glfw3.h>
 
 namespace Number {
 
@@ -21,6 +24,7 @@ namespace Number {
 
         m_Window = std::unique_ptr<Window>(Window::Create()); 
         m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+        m_Window->SetVSync(false);
 
         m_ImGuiLayer = new ImGuiLayer();
         PushOverlay(m_ImGuiLayer);
@@ -58,13 +62,18 @@ namespace Number {
 	void Application::Run() {
         while (m_Running)
         {
+            m_CurrentTime = Platform::GetTime();
+            m_Timestep = m_CurrentTime - m_LastFrameTime;
+            m_LastFrameTime = m_CurrentTime;
+
             m_ImGuiLayer->Begin();
             for (Layer* layer : m_LayerStack)
                 layer->OnImGuiRender();
             m_ImGuiLayer->End();
 
             for (Layer* layer : m_LayerStack)
-                layer->OnUpdate();
+                layer->OnUpdate(m_Timestep);
+
             m_Window->OnUpdate();
         }
 	}

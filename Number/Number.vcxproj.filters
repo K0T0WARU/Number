@@ -1387,6 +1387,8 @@
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
     <ClInclude Include="src\Number\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Number\Core\Timestep.h" />
+    <ClInclude Include="src\Platform\Platform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Number\Application.cpp">
@@ -1444,5 +1446,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Number\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Platform\Platform.cpp" />
   </ItemGroup>
 </Project>

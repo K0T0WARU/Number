@@ -6,6 +6,8 @@
 #include "Number/Layer.h"
 #include "Number/ImGui/ImGuiLayer.h"
 
+#include "Number/Core/Timestep.h"
+
 // Controllers
 #include "Number/Input.h"
 #include "Number/MouseButtonCodes.h"

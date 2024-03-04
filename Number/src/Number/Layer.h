@@ -2,6 +2,8 @@
 
 #include "Number/Events/Event.h"
 
+#include "Number/Core/Timestep.h"
+
 namespace Number {
 
     class Layer
@@ -12,7 +14,7 @@ namespace Number {
 
         virtual void OnAttach() {}
         virtual void OnDetach() {}
-        virtual void OnUpdate() {}
+        virtual void OnUpdate(Timestep& timestep) {}
         virtual void OnImGuiRender() {}
         virtual void OnEvent(Event& event) {}
 

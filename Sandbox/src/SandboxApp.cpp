@@ -3,7 +3,10 @@
 
 #include "imgui.h"
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class ExampleLayer : public Number::Layer 
 {
@@ -35,8 +38,6 @@ public:
         std::shared_ptr<Number::IndexBuffer> indexBuffer;
         indexBuffer.reset(Number::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
         m_VertexArray->SetIndexBuffer(indexBuffer);
-
-
 
         m_SquareVertexArray.reset(Number::VertexArray::Create());
 
@@ -97,7 +98,7 @@ public:
             }  
         )";
 
-        m_Shader.reset(new Number::Shader(vertexSrc, fragmentSrc));
+        m_Shader.reset(Number::Shader::Create(vertexSrc, fragmentSrc));
 
         std::string squareVertexSrc = R"(
             #version 430 core
@@ -123,19 +124,19 @@ public:
 
             in vec3 v_Position;
 
+            uniform vec3 u_Color;
+
             void main()
             {
-                color = vec4(0.2f, 0.2f, 0.5f, 1.0f);
+                color = vec4(u_Color, 1.0f);
             }  
         )";
 
-        m_SquareShader.reset(new Number::Shader(squareVertexSrc, squareFragmentSrc));
+        m_SquareShader.reset(Number::Shader::Create(squareVertexSrc, squareFragmentSrc));
     }
 
     void OnUpdate(Number::Timestep& timestep) override
     {
-        NUM_TRACE("Delta time: {0}s ({1}ms)", timestep.GetSeconds(), timestep.GetMilliseconds());
-
         if (Number::Input::IsKeyPresed(NUM_KEY_RIGHT))
             m_CameraPosition.x += m_CameraMoveSpeed * timestep;
         else if (Number::Input::IsKeyPresed(NUM_KEY_LEFT))
@@ -169,6 +170,9 @@ public:
 
         Number::Renderer::BeginScene(m_Camera);
 
+        std::dynamic_pointer_cast<Number::OpenGLShader>(m_SquareShader)->Bind();
+        std::dynamic_pointer_cast<Number::OpenGLShader>(m_SquareShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
         glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePosition);
 
         Number::Renderer::Submit(m_SquareShader, m_SquareVertexArray, transform);
@@ -179,7 +183,9 @@ public:
 
     virtual void OnImGuiRender() override
     {
-        
+        ImGui::Begin("Settings");
+        ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+        ImGui::End();
     }
 
     void OnEvent(Number::Event& event) override
@@ -203,6 +209,8 @@ private:
 
     glm::vec3 m_SquarePosition;
     float m_SquareMoveSpeed = 0.5f;
+
+    glm::vec3 m_SquareColor = { 0.2f, 0.2f, 0.8f };
 };
 
 class Sandbox : public Number::Application 

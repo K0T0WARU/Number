@@ -66,13 +66,13 @@ namespace Number {
             m_Timestep = m_CurrentTime - m_LastFrameTime;
             m_LastFrameTime = m_CurrentTime;
 
+            for (Layer* layer : m_LayerStack)
+                layer->OnUpdate(m_Timestep);
+
             m_ImGuiLayer->Begin();
             for (Layer* layer : m_LayerStack)
                 layer->OnImGuiRender();
             m_ImGuiLayer->End();
-
-            for (Layer* layer : m_LayerStack)
-                layer->OnUpdate(m_Timestep);
 
             m_Window->OnUpdate();
         }

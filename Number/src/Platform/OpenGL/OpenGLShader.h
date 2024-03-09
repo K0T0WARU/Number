@@ -2,11 +2,16 @@
 
 #include "Number/Renderer/Shader.h"
 
+#include <glm/glm.hpp>
+
+typedef unsigned int GLenum;
+
 namespace Number {
 
     class OpenGLShader : public Shader
     {
     public:
+        OpenGLShader(const std::string& filepath);
         OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
         virtual ~OpenGLShader();
 
@@ -22,6 +27,10 @@ namespace Number {
         void UploadUniformFloat4(const std::string& name, const glm::vec4& values);
 
         void UploadUniformInt(const std::string& name, const int value);
+    private:
+        std::string ReadFile(const std::string& filepath);
+        std::unordered_map<GLenum, std::string> PreProcess(const std::string& sourece);
+        void Compile(const std::unordered_map<GLenum, std::string>& shaderSources);
     private:
         uint32_t m_RendererID;
     };

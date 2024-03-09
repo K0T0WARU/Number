@@ -9,7 +9,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <unordered_map>
 
 #ifdef NUM_PLATFORM_WINDOWS
     #include <Windows.h>

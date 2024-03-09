@@ -16,13 +16,13 @@ public:
     {
         m_VertexArray.reset(Number::VertexArray::Create());
 
-        float vertices[3 * 7] = {
+        float vertices[7 * 3] = {
             -0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.2f, 1.0f,
              0.5f, -0.5f, 0.0f, 0.2f, 0.8f, 0.2f, 1.0f,
              0.0f,  0.5f, 0.0f, 0.2f, 0.2f, 0.8f, 1.0f
         };
 
-        std::shared_ptr<Number::VertexBuffer> vertexBuffer;
+        Number::Ref<Number::VertexBuffer> vertexBuffer;
         vertexBuffer.reset(Number::VertexBuffer::Create(vertices, sizeof(vertices)));
 
         Number::BufferLayout layout = {
@@ -35,24 +35,25 @@ public:
 
         uint32_t indices[3] = { 0, 1, 2 };
 
-        std::shared_ptr<Number::IndexBuffer> indexBuffer;
+        Number::Ref<Number::IndexBuffer> indexBuffer;
         indexBuffer.reset(Number::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
         m_VertexArray->SetIndexBuffer(indexBuffer);
 
         m_SquareVertexArray.reset(Number::VertexArray::Create());
 
-        float squareVertices[4 * 3] = {
-            -0.8f, -0.8f, 0.0f,
-             0.8f, -0.8f, 0.0f,
-             0.8f,  0.8f, 0.0f,
-            -0.8f,  0.8f, 0.0f
+        float squareVertices[5 * 4] = {
+            -0.8f, -0.8f, 0.0f, 0.0f, 0.0f,
+             0.8f, -0.8f, 0.0f, 1.0f, 0.0f,
+             0.8f,  0.8f, 0.0f, 1.0f, 1.0f,
+            -0.8f,  0.8f, 0.0f, 0.0f, 1.0f
         };
 
         Number::BufferLayout squareLayout = {
-            { Number::ShaderDataType::Float3, "a_Position" }
+            { Number::ShaderDataType::Float3, "a_Position" },
+            { Number::ShaderDataType::Float2, "a_TexCoord" }
         };
 
-        std::shared_ptr<Number::VertexBuffer> squareVertexBuffer;
+        Number::Ref<Number::VertexBuffer> squareVertexBuffer;
         squareVertexBuffer.reset(Number::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
         squareVertexBuffer->SetLayout(squareLayout);
@@ -60,7 +61,7 @@ public:
 
         uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 
-        std::shared_ptr<Number::IndexBuffer> squareIndexBuffer;
+        Number::Ref<Number::IndexBuffer> squareIndexBuffer;
         squareIndexBuffer.reset(Number::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
         m_SquareVertexArray->SetIndexBuffer(squareIndexBuffer);
 
@@ -100,39 +101,45 @@ public:
 
         m_Shader.reset(Number::Shader::Create(vertexSrc, fragmentSrc));
 
-        std::string squareVertexSrc = R"(
+        std::string textureVertexSrc = R"(
             #version 430 core
             
             layout(location = 0) in vec3 a_Position;
+            layout(location = 1) in vec2 a_TexCoord;
             
             uniform mat4 u_ViewProjectionMatrix;
             uniform mat4 u_Transform;
 
-            out vec3 v_Position;
+            out vec2 v_TexCoord;
             
             void main()
             {
-                v_Position = a_Position;
+                v_TexCoord = a_TexCoord;
                 gl_Position = u_ViewProjectionMatrix * u_Transform * vec4(a_Position, 1.0); 
             }  
         )";
 
-        std::string squareFragmentSrc = R"(
+        std::string textureFragmentSrc = R"(
             #version 430 core
             
             layout(location = 0) out vec4 color;
 
-            in vec3 v_Position;
+            in vec2 v_TexCoord;
 
-            uniform vec3 u_Color;
+            uniform sampler2D u_Texture;
 
             void main()
             {
-                color = vec4(u_Color, 1.0f);
+                color = texture(u_Texture, v_TexCoord);
             }  
         )";
 
-        m_SquareShader.reset(Number::Shader::Create(squareVertexSrc, squareFragmentSrc));
+        m_TextureShader.reset(Number::Shader::Create(textureVertexSrc, textureFragmentSrc));
+
+        m_Texture = Number::Texture2D::Create("assets/textures/Goblin.png");
+
+        std::dynamic_pointer_cast<Number::OpenGLShader>(m_TextureShader)->Bind();
+        std::dynamic_pointer_cast<Number::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
     }
 
     void OnUpdate(Number::Timestep& timestep) override
@@ -170,13 +177,15 @@ public:
 
         Number::Renderer::BeginScene(m_Camera);
 
-        std::dynamic_pointer_cast<Number::OpenGLShader>(m_SquareShader)->Bind();
-        std::dynamic_pointer_cast<Number::OpenGLShader>(m_SquareShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+        std::dynamic_pointer_cast<Number::OpenGLShader>(m_TextureShader)->Bind();
+        std::dynamic_pointer_cast<Number::OpenGLShader>(m_TextureShader)->UploadUniformFloat3("u_Color", m_SquareColor);
 
         glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePosition);
 
-        Number::Renderer::Submit(m_SquareShader, m_SquareVertexArray, transform);
-        Number::Renderer::Submit(m_Shader, m_VertexArray);
+        m_Texture->Bind();
+
+        Number::Renderer::Submit(m_TextureShader, m_SquareVertexArray, transform);
+        //Number::Renderer::Submit(m_Shader, m_VertexArray);
 
         Number::Renderer::EndScene();
     }
@@ -193,11 +202,13 @@ public:
         
     }
 private:
-    std::shared_ptr<Number::Shader> m_Shader;
-    std::shared_ptr<Number::VertexArray> m_VertexArray;
+    Number::Ref<Number::Shader> m_Shader;
+    Number::Ref<Number::VertexArray> m_VertexArray;
 
-    std::shared_ptr<Number::Shader> m_SquareShader;
-    std::shared_ptr<Number::VertexArray> m_SquareVertexArray;
+    Number::Ref<Number::Shader> m_TextureShader;
+    Number::Ref<Number::VertexArray> m_SquareVertexArray;
+
+    Number::Ref<Number::Texture2D> m_Texture;
 
     Number::OrthographicCamera m_Camera;
 
@@ -207,7 +218,7 @@ private:
     float m_CameraRotation;
     float m_CameraRotationSpeed = 10.0f;
 
-    glm::vec3 m_SquarePosition;
+    glm::vec3 m_SquarePosition = { 0.0f, 0.0f, 0.0f };
     float m_SquareMoveSpeed = 0.5f;
 
     glm::vec3 m_SquareColor = { 0.2f, 0.2f, 0.8f };

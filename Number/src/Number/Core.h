@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef NUM_PLATFORM_WINDOWS
 	#ifdef NUM_BUILD_DLL
 		#define NUMBER_API __declspec(dllexport)
@@ -23,3 +25,13 @@
 #endif
 
 #define BIT(x) (1 << x)
+
+namespace Number {
+
+    template<typename T>
+    using Scope = std::unique_ptr<T>;
+
+    template<typename T>
+    using Ref = std::shared_ptr<T>;
+
+}

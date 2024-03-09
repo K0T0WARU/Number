@@ -17,8 +17,9 @@
 #include "Number/Renderer/Renderer.h"
 #include "Number/Renderer/RenderCommand.h"
 
-#include "Number/Renderer/Shader.h"
 #include "Number/Renderer/Buffer.h"
+#include "Number/Renderer/Shader.h"
+#include "Number/Renderer/Texture.h"
 #include "Number/Renderer/VertexArray.h"
 
 #include "Number/Renderer/OrthographicCamera.h"

@@ -9,6 +9,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <array>
 
 #ifdef NUM_PLATFORM_WINDOWS
     #include <Windows.h>

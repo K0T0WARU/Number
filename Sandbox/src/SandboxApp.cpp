@@ -99,14 +99,14 @@ public:
             }  
         )";
 
-        m_Shader.reset(Number::Shader::Create(vertexSrc, fragmentSrc));
+        m_Shader = Number::Shader::Create("TriangleShader", vertexSrc, fragmentSrc);
 
-        m_TextureShader.reset(Number::Shader::Create("assets/shaders/Texture.glsl"));
+        auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
         m_Texture = Number::Texture2D::Create("assets/textures/Goblin.png");
 
-        std::dynamic_pointer_cast<Number::OpenGLShader>(m_TextureShader)->Bind();
-        std::dynamic_pointer_cast<Number::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+        std::dynamic_pointer_cast<Number::OpenGLShader>(textureShader)->Bind();
+        std::dynamic_pointer_cast<Number::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
     }
 
     void OnUpdate(Number::Timestep& timestep) override
@@ -144,14 +144,16 @@ public:
 
         Number::Renderer::BeginScene(m_Camera);
 
-        std::dynamic_pointer_cast<Number::OpenGLShader>(m_TextureShader)->Bind();
-        std::dynamic_pointer_cast<Number::OpenGLShader>(m_TextureShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+        auto textureShader = m_ShaderLibrary.Get("Texture");
+
+        std::dynamic_pointer_cast<Number::OpenGLShader>(textureShader)->Bind();
+        std::dynamic_pointer_cast<Number::OpenGLShader>(textureShader)->UploadUniformFloat3("u_Color", m_SquareColor);
 
         glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePosition);
 
         m_Texture->Bind();
 
-        Number::Renderer::Submit(m_TextureShader, m_SquareVertexArray, transform);
+        Number::Renderer::Submit(textureShader, m_SquareVertexArray, transform);
         //Number::Renderer::Submit(m_Shader, m_VertexArray);
 
         Number::Renderer::EndScene();
@@ -169,10 +171,11 @@ public:
         
     }
 private:
+    Number::ShaderLibrary m_ShaderLibrary;
+
     Number::Ref<Number::Shader> m_Shader;
     Number::Ref<Number::VertexArray> m_VertexArray;
 
-    Number::Ref<Number::Shader> m_TextureShader;
     Number::Ref<Number::VertexArray> m_SquareVertexArray;
 
     Number::Ref<Number::Texture2D> m_Texture;

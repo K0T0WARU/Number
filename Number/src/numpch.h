@@ -16,3 +16,4 @@
 #endif
 
 #include "Number/Log.h"
+#include "Number/Core.h"

@@ -12,6 +12,7 @@
 #include "Number/Input.h"
 #include "Number/MouseButtonCodes.h"
 #include "Number/KeyCodes.h"
+#include "Number/OrthographicCameraController.h"
 
 // Rendering
 #include "Number/Renderer/Renderer.h"

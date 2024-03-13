@@ -12,7 +12,7 @@ class ExampleLayer : public Number::Layer
 {
 public:
     ExampleLayer()
-        : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_CameraRotation(0.0f), m_SquarePosition(0.0f)
+        : Layer("Example"), m_CameraController(1600.0f / 900.0f, true), m_SquarePosition(0.0f)
     {
         m_VertexArray.reset(Number::VertexArray::Create());
 
@@ -111,22 +111,9 @@ public:
 
     void OnUpdate(Number::Timestep& timestep) override
     {
-        if (Number::Input::IsKeyPresed(NUM_KEY_RIGHT))
-            m_CameraPosition.x += m_CameraMoveSpeed * timestep;
-        else if (Number::Input::IsKeyPresed(NUM_KEY_LEFT))
-            m_CameraPosition.x -= m_CameraMoveSpeed * timestep;
+        m_CameraController.OnUpdate(timestep);
 
-        if (Number::Input::IsKeyPresed(NUM_KEY_UP))
-            m_CameraPosition.y += m_CameraMoveSpeed * timestep;
-        else if (Number::Input::IsKeyPresed(NUM_KEY_DOWN))
-            m_CameraPosition.y -= m_CameraMoveSpeed * timestep;
-
-        if (Number::Input::IsKeyPresed(NUM_KEY_E))
-            m_CameraRotation += m_CameraRotationSpeed * timestep;
-        else if (Number::Input::IsKeyPresed(NUM_KEY_Q))
-            m_CameraRotation -= m_CameraRotationSpeed * timestep;
-
-        if (Number::Input::IsKeyPresed(NUM_KEY_D))
+        /*if (Number::Input::IsKeyPresed(NUM_KEY_D))
             m_SquarePosition.x += m_SquareMoveSpeed * timestep;
         else if (Number::Input::IsKeyPresed(NUM_KEY_A))
             m_SquarePosition.x -= m_SquareMoveSpeed * timestep;
@@ -134,15 +121,12 @@ public:
         if (Number::Input::IsKeyPresed(NUM_KEY_W))
             m_SquarePosition.y += m_SquareMoveSpeed * timestep;
         else if (Number::Input::IsKeyPresed(NUM_KEY_S))
-            m_SquarePosition.y -= m_SquareMoveSpeed * timestep;
+            m_SquarePosition.y -= m_SquareMoveSpeed * timestep;*/
 
         Number::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
         Number::RenderCommand::Clear();
 
-        m_Camera.SetPosition(m_CameraPosition);
-        m_Camera.SetRotation(m_CameraRotation);
-
-        Number::Renderer::BeginScene(m_Camera);
+        Number::Renderer::BeginScene(m_CameraController.GetCamera());
 
         auto textureShader = m_ShaderLibrary.Get("Texture");
 
@@ -168,7 +152,7 @@ public:
 
     void OnEvent(Number::Event& event) override
     {
-        
+        m_CameraController.OnEvent(event);
     }
 private:
     Number::ShaderLibrary m_ShaderLibrary;
@@ -180,13 +164,13 @@ private:
 
     Number::Ref<Number::Texture2D> m_Texture;
 
-    Number::OrthographicCamera m_Camera;
+    Number::OrthographicCameraController m_CameraController;
 
-    glm::vec3 m_CameraPosition;
+    /*glm::vec3 m_CameraPosition;
     float m_CameraMoveSpeed = 1.5f;
 
     float m_CameraRotation;
-    float m_CameraRotationSpeed = 10.0f;
+    float m_CameraRotationSpeed = 10.0f;*/
 
     glm::vec3 m_SquarePosition = { 0.0f, 0.0f, 0.0f };
     float m_SquareMoveSpeed = 0.5f;

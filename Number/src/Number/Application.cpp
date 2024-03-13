@@ -13,8 +13,6 @@
 
 namespace Number {
 
-#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
-
     Application* Application::s_Instance = nullptr;
 
 	Application::Application()
@@ -23,7 +21,7 @@ namespace Number {
         s_Instance = this;
 
         m_Window = Scope<Window>(Window::Create()); 
-        m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+        m_Window->SetEventCallback(NUM_BIND_EVENT_FN(Application::OnEvent));
 
         Renderer::Init();
 
@@ -50,7 +48,7 @@ namespace Number {
     void Application::OnEvent(Event& e)
     {
         EventDispatcher dispatcher(e);
-        dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClosed));
+        dispatcher.Dispatch<WindowCloseEvent>(NUM_BIND_EVENT_FN(Application::OnWindowClosed));
 
         for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
         {

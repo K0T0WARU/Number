@@ -26,6 +26,8 @@
 
 #define BIT(x) (1 << x)
 
+#define NUM_BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
 namespace Number {
 
     template<typename T>

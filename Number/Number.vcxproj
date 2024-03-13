@@ -152,6 +152,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Number\OrthographicCameraController.h" />
     <ClInclude Include="src\Number.h" />
     <ClInclude Include="src\Number\Application.h" />
     <ClInclude Include="src\Number\Core.h" />
@@ -607,6 +608,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Number\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Number\Application.cpp" />
     <ClCompile Include="src\Number\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Number\Layer.cpp" />

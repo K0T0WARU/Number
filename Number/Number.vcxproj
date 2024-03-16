@@ -152,6 +152,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Number\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Number.h" />
     <ClInclude Include="src\Number\Core\Application.h" />
     <ClInclude Include="src\Number\Core\Core.h" />
@@ -608,6 +609,7 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Number\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Number\Core\Application.cpp" />
     <ClCompile Include="src\Number\Core\Layer.cpp" />
     <ClCompile Include="src\Number\Core\LayerStack.cpp" />

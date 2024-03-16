@@ -19,7 +19,6 @@ private:
     Number::ShaderLibrary m_ShaderLibrary;
 
     Number::Ref<Number::Shader> m_FlatColorShader;
-
     Number::Ref<Number::VertexArray> m_SquareVertexArray;
 
     Number::Ref<Number::Texture2D> m_Texture;

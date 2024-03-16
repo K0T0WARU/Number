@@ -3,7 +3,7 @@
 // App
 #include "Core/Application.h"
 
-#include "Core/Layer.h"
+#include "Core/Layer.h"  
 #include "ImGui/ImGuiLayer.h"
 
 #include "Core/Timestep.h"
@@ -16,6 +16,7 @@
 
 // Rendering
 #include "Renderer/Renderer.h"
+#include "Renderer/Renderer2D.h"
 #include "Renderer/RenderCommand.h"
 
 #include "Renderer/Buffer.h"

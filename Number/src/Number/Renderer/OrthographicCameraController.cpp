@@ -1,8 +1,8 @@
 #include "numpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Number/Input.h"
-#include "Number/KeyCodes.h"
+#include "Core/Input.h"
+#include "Core/KeyCodes.h"
 
 namespace Number {
 
@@ -47,14 +47,14 @@ namespace Number {
         m_ZoomLevel -= e.GetYOffset() * m_ZoomSpeed;
         m_ZoomLevel = std::max(m_ZoomLevel, m_ZoomMin);
         m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
-        return true;
+        return false;
     }
 
     bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e)
     {
         m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
         m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
-        return true;
+        return false;
     }
 
 }

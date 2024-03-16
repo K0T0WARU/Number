@@ -1,11 +1,11 @@
 #include "numpch.h"
 #include "Renderer.h"
 
-#include "Number/Renderer/VertexArray.h"
-#include "Number/Renderer/RenderCommand.h"
-#include "Number/Renderer/RendererAPI.h"
+#include "Renderer/VertexArray.h"
+#include "Renderer/RenderCommand.h"
+#include "Renderer/RendererAPI.h"
 
-#include "RenderCommand.h"
+#include "Renderer/RenderCommand.h"
 
 #include "Platform/OpenGL/OpenGLShader.h"
 
@@ -18,6 +18,11 @@ namespace Number {
     void Renderer::Init()
     {
         RenderCommand::Init();
+    }
+
+    void Renderer::OnWindowResize(uint32_t width, uint32_t height)
+    {
+        RenderCommand::SetViewport(0, 0, width, height);
     }
 
     void Renderer::BeginScene(OrthographicCamera& camera)

@@ -1,29 +1,26 @@
 #pragma once
 
 // App
-#include "Number/Application.h"
+#include "Core/Application.h"
 
-#include "Number/Layer.h"
-#include "Number/ImGui/ImGuiLayer.h"
+#include "Core/Layer.h"
+#include "ImGui/ImGuiLayer.h"
 
-#include "Number/Core/Timestep.h"
+#include "Core/Timestep.h"
 
 // Controllers
-#include "Number/Input.h"
-#include "Number/MouseButtonCodes.h"
-#include "Number/KeyCodes.h"
-#include "Number/OrthographicCameraController.h"
+#include "Core/Input.h"
+#include "Core/MouseButtonCodes.h"
+#include "Core/KeyCodes.h"
+#include "Renderer/OrthographicCameraController.h"
 
 // Rendering
-#include "Number/Renderer/Renderer.h"
-#include "Number/Renderer/RenderCommand.h"
+#include "Renderer/Renderer.h"
+#include "Renderer/RenderCommand.h"
 
-#include "Number/Renderer/Buffer.h"
-#include "Number/Renderer/Shader.h"
-#include "Number/Renderer/Texture.h"
-#include "Number/Renderer/VertexArray.h"
+#include "Renderer/Buffer.h"
+#include "Renderer/Shader.h"
+#include "Renderer/Texture.h"
+#include "Renderer/VertexArray.h"
 
-#include "Number/Renderer/OrthographicCamera.h"
-
-// Entry Point
-#include "Number/EntryPoint.h"
+#include "Renderer/OrthographicCamera.h"

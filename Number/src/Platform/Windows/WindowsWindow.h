@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Number/Window.h"
+#include "Core/Window.h"
 
-#include "Number/Renderer/GraphicsContext.h"
+#include "Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 

@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>numpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NUM_PLATFORM_WINDOWS;NUM_BUILD_DLL;GLFW_INCLUDE_NONE;_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;NUM_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Number;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -101,7 +101,7 @@
       <PrecompiledHeaderFile>numpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NUM_PLATFORM_WINDOWS;NUM_BUILD_DLL;GLFW_INCLUDE_NONE;_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;NUM_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Number;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -129,7 +129,7 @@
       <PrecompiledHeaderFile>numpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NUM_PLATFORM_WINDOWS;NUM_BUILD_DLL;GLFW_INCLUDE_NONE;_SILENCE_ALL_MS_EXT_DEPRECATION_WARNINGS;NUM_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;src\Number;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -152,33 +152,33 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Number\OrthographicCameraController.h" />
     <ClInclude Include="src\Number.h" />
-    <ClInclude Include="src\Number\Application.h" />
-    <ClInclude Include="src\Number\Core.h" />
+    <ClInclude Include="src\Number\Core\Application.h" />
+    <ClInclude Include="src\Number\Core\Core.h" />
+    <ClInclude Include="src\Number\Core\EntryPoint.h" />
+    <ClInclude Include="src\Number\Core\Input.h" />
+    <ClInclude Include="src\Number\Core\KeyCodes.h" />
+    <ClInclude Include="src\Number\Core\Layer.h" />
+    <ClInclude Include="src\Number\Core\LayerStack.h" />
+    <ClInclude Include="src\Number\Core\Log.h" />
+    <ClInclude Include="src\Number\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Number\Core\Timestep.h" />
-    <ClInclude Include="src\Number\EntryPoint.h" />
+    <ClInclude Include="src\Number\Core\Window.h" />
     <ClInclude Include="src\Number\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Number\Events\Event.h" />
     <ClInclude Include="src\Number\Events\KeyEvent.h" />
     <ClInclude Include="src\Number\Events\MouseEvent.h" />
     <ClInclude Include="src\Number\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Number\Input.h" />
-    <ClInclude Include="src\Number\KeyCodes.h" />
-    <ClInclude Include="src\Number\Layer.h" />
-    <ClInclude Include="src\Number\LayerStack.h" />
-    <ClInclude Include="src\Number\Log.h" />
-    <ClInclude Include="src\Number\MouseButtonCodes.h" />
     <ClInclude Include="src\Number\Renderer\Buffer.h" />
     <ClInclude Include="src\Number\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Number\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Number\Renderer\OrthographicCameraController.h" />
     <ClInclude Include="src\Number\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Number\Renderer\Renderer.h" />
     <ClInclude Include="src\Number\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Number\Renderer\Shader.h" />
     <ClInclude Include="src\Number\Renderer\Texture.h" />
     <ClInclude Include="src\Number\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Number\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
@@ -608,14 +608,14 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Number\OrthographicCameraController.cpp" />
-    <ClCompile Include="src\Number\Application.cpp" />
+    <ClCompile Include="src\Number\Core\Application.cpp" />
+    <ClCompile Include="src\Number\Core\Layer.cpp" />
+    <ClCompile Include="src\Number\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Number\Core\Log.cpp" />
     <ClCompile Include="src\Number\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Number\Layer.cpp" />
-    <ClCompile Include="src\Number\LayerStack.cpp" />
-    <ClCompile Include="src\Number\Log.cpp" />
     <ClCompile Include="src\Number\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Number\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Number\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Number\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Number\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Number\Renderer\RendererAPI.cpp" />

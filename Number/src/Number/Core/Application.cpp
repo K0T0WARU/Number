@@ -1,10 +1,8 @@
 #include "numpch.h"
 #include "Application.h"
 
-#include "Number/Events/ApplicationEvent.h"
-
-#include "Number/Renderer/Renderer.h"
-#include "Number/Renderer/RenderCommand.h"
+#include "Renderer/Renderer.h"
+#include "Renderer/RenderCommand.h"
 
 #include "Platform/Platform.h"
 
@@ -49,6 +47,7 @@ namespace Number {
     {
         EventDispatcher dispatcher(e);
         dispatcher.Dispatch<WindowCloseEvent>(NUM_BIND_EVENT_FN(Application::OnWindowClosed));
+        dispatcher.Dispatch<WindowResizeEvent>(NUM_BIND_EVENT_FN(Application::OnWindowResize));
 
         for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
         {
@@ -65,8 +64,11 @@ namespace Number {
             m_Timestep = m_CurrentTime - m_LastFrameTime;
             m_LastFrameTime = m_CurrentTime;
 
-            for (Layer* layer : m_LayerStack)
-                layer->OnUpdate(m_Timestep);
+            if (!m_Minimized)
+            {
+                for (Layer* layer : m_LayerStack)
+                    layer->OnUpdate(m_Timestep);
+            }
 
             m_ImGuiLayer->Begin();
             for (Layer* layer : m_LayerStack)
@@ -77,9 +79,21 @@ namespace Number {
         }
 	}
 
-    bool Application::OnWindowClosed(WindowCloseEvent& e)
+    bool Application::OnWindowClosed(WindowCloseEvent& event)
     {
         m_Running = false;
         return true;
+    }
+
+    bool Application::OnWindowResize(WindowResizeEvent& e)
+    {
+        if (e.GetWidth() == 0 || e.GetHeight() == 0)
+        {
+            m_Minimized = true;
+            return false;
+        }
+        m_Minimized = false;
+        Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+        return false;
     }
 }

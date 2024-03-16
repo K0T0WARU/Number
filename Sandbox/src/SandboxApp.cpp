@@ -1,5 +1,6 @@
 #include "numpch.h"
 #include <Number.h>
+#include "Core/EntryPoint.h"
 
 #include "imgui.h"
 
@@ -8,13 +9,15 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Sandbox2D.h"
+
 class ExampleLayer : public Number::Layer 
 {
 public:
     ExampleLayer()
-        : Layer("Example"), m_CameraController(1600.0f / 900.0f, true), m_SquarePosition(0.0f)
+        : Layer("Example"), m_CameraController(1920.0f / 1080.0f, true), m_SquarePosition(0.0f)
     {
-        m_VertexArray.reset(Number::VertexArray::Create());
+        m_VertexArray = Number::VertexArray::Create();
 
         float vertices[7 * 3] = {
             -0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.2f, 1.0f,
@@ -23,7 +26,7 @@ public:
         };
 
         Number::Ref<Number::VertexBuffer> vertexBuffer;
-        vertexBuffer.reset(Number::VertexBuffer::Create(vertices, sizeof(vertices)));
+        vertexBuffer = Number::VertexBuffer::Create(vertices, sizeof(vertices));
 
         Number::BufferLayout layout = {
             { Number::ShaderDataType::Float3, "a_Position" },
@@ -36,10 +39,10 @@ public:
         uint32_t indices[3] = { 0, 1, 2 };
 
         Number::Ref<Number::IndexBuffer> indexBuffer;
-        indexBuffer.reset(Number::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+        indexBuffer = Number::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
         m_VertexArray->SetIndexBuffer(indexBuffer);
 
-        m_SquareVertexArray.reset(Number::VertexArray::Create());
+        m_SquareVertexArray = Number::VertexArray::Create();
 
         float squareVertices[5 * 4] = {
             -0.8f, -0.8f, 0.0f, 0.0f, 0.0f,
@@ -54,7 +57,7 @@ public:
         };
 
         Number::Ref<Number::VertexBuffer> squareVertexBuffer;
-        squareVertexBuffer.reset(Number::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+        squareVertexBuffer = Number::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 
         squareVertexBuffer->SetLayout(squareLayout);
         m_SquareVertexArray->AddVertexBuffer(squareVertexBuffer);
@@ -62,7 +65,7 @@ public:
         uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
 
         Number::Ref<Number::IndexBuffer> squareIndexBuffer;
-        squareIndexBuffer.reset(Number::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+        squareIndexBuffer = Number::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
         m_SquareVertexArray->SetIndexBuffer(squareIndexBuffer);
 
         std::string vertexSrc = R"(
@@ -101,7 +104,7 @@ public:
 
         m_Shader = Number::Shader::Create("TriangleShader", vertexSrc, fragmentSrc);
 
-        auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+        auto textureShader = m_TextureShaderLibrary.Load("assets/shaders/Texture.glsl");
 
         m_Texture = Number::Texture2D::Create("assets/textures/Goblin.png");
 
@@ -128,7 +131,7 @@ public:
 
         Number::Renderer::BeginScene(m_CameraController.GetCamera());
 
-        auto textureShader = m_ShaderLibrary.Get("Texture");
+        auto textureShader = m_TextureShaderLibrary.Get("Texture");
 
         std::dynamic_pointer_cast<Number::OpenGLShader>(textureShader)->Bind();
         std::dynamic_pointer_cast<Number::OpenGLShader>(textureShader)->UploadUniformFloat3("u_Color", m_SquareColor);
@@ -150,12 +153,13 @@ public:
         ImGui::End();
     }
 
-    void OnEvent(Number::Event& event) override
+    void OnEvent(Number::Event& e) override
     {
-        m_CameraController.OnEvent(event);
+        m_CameraController.OnEvent(e);
     }
 private:
-    Number::ShaderLibrary m_ShaderLibrary;
+    Number::ShaderLibrary m_TextureShaderLibrary;
+    Number::ShaderLibrary m_FlatShaderLibrary;
 
     Number::Ref<Number::Shader> m_Shader;
     Number::Ref<Number::VertexArray> m_VertexArray;
@@ -165,12 +169,6 @@ private:
     Number::Ref<Number::Texture2D> m_Texture;
 
     Number::OrthographicCameraController m_CameraController;
-
-    /*glm::vec3 m_CameraPosition;
-    float m_CameraMoveSpeed = 1.5f;
-
-    float m_CameraRotation;
-    float m_CameraRotationSpeed = 10.0f;*/
 
     glm::vec3 m_SquarePosition = { 0.0f, 0.0f, 0.0f };
     float m_SquareMoveSpeed = 0.5f;
@@ -183,7 +181,8 @@ class Sandbox : public Number::Application
 public:
 	Sandbox() 
     {
-        PushLayer(new ExampleLayer());
+        //PushLayer(new ExampleLayer());
+        PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox() 

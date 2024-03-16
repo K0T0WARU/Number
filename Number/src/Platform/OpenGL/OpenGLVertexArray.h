@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Number/Renderer/VertexArray.h"
+#include "Renderer/VertexArray.h"
 
 namespace Number {
 

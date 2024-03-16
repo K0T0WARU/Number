@@ -57,17 +57,38 @@
     <ClInclude Include="src\Number.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\Application.h">
-      <Filter>src\Number</Filter>
+    <ClInclude Include="src\Number\Core\Application.h">
+      <Filter>src\Number\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\Core.h">
-      <Filter>src\Number</Filter>
+    <ClInclude Include="src\Number\Core\Core.h">
+      <Filter>src\Number\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Core\EntryPoint.h">
+      <Filter>src\Number\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Core\Input.h">
+      <Filter>src\Number\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Core\KeyCodes.h">
+      <Filter>src\Number\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Core\Layer.h">
+      <Filter>src\Number\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Core\LayerStack.h">
+      <Filter>src\Number\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Core\Log.h">
+      <Filter>src\Number\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Core\MouseButtonCodes.h">
+      <Filter>src\Number\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Number\Core\Timestep.h">
       <Filter>src\Number\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\EntryPoint.h">
-      <Filter>src\Number</Filter>
+    <ClInclude Include="src\Number\Core\Window.h">
+      <Filter>src\Number\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Number\Events\ApplicationEvent.h">
       <Filter>src\Number\Events</Filter>
@@ -84,24 +105,6 @@
     <ClInclude Include="src\Number\ImGui\ImGuiLayer.h">
       <Filter>src\Number\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\Input.h">
-      <Filter>src\Number</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Number\KeyCodes.h">
-      <Filter>src\Number</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Number\Layer.h">
-      <Filter>src\Number</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Number\LayerStack.h">
-      <Filter>src\Number</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Number\Log.h">
-      <Filter>src\Number</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Number\MouseButtonCodes.h">
-      <Filter>src\Number</Filter>
-    </ClInclude>
     <ClInclude Include="src\Number\Renderer\Buffer.h">
       <Filter>src\Number\Renderer</Filter>
     </ClInclude>
@@ -109,6 +112,9 @@
       <Filter>src\Number\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Number\Renderer\OrthographicCamera.h">
+      <Filter>src\Number\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Number\Renderer\OrthographicCameraController.h">
       <Filter>src\Number\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Number\Renderer\RenderCommand.h">
@@ -128,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="src\Number\Renderer\VertexArray.h">
       <Filter>src\Number\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Number\Window.h">
-      <Filter>src\Number</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1413,30 +1416,30 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Number\OrthographicCameraController.h">
-      <Filter>src\Number</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Number\Application.cpp">
-      <Filter>src\Number</Filter>
+    <ClCompile Include="src\Number\Core\Application.cpp">
+      <Filter>src\Number\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Number\Core\Layer.cpp">
+      <Filter>src\Number\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Number\Core\LayerStack.cpp">
+      <Filter>src\Number\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Number\Core\Log.cpp">
+      <Filter>src\Number\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Number\ImGui\ImGuiLayer.cpp">
       <Filter>src\Number\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Number\Layer.cpp">
-      <Filter>src\Number</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Number\LayerStack.cpp">
-      <Filter>src\Number</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Number\Log.cpp">
-      <Filter>src\Number</Filter>
     </ClCompile>
     <ClCompile Include="src\Number\Renderer\Buffer.cpp">
       <Filter>src\Number\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Number\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Number\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Number\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Number\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Number\Renderer\RenderCommand.cpp">
@@ -1489,9 +1492,6 @@
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Number\OrthographicCameraController.cpp">
-      <Filter>src\Number</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

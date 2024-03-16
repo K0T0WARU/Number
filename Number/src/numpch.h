@@ -15,5 +15,5 @@
     #include <Windows.h>
 #endif
 
-#include "Number/Log.h"
-#include "Number/Core.h"
+#include "Core/Log.h"
+#include "Core/Core.h"

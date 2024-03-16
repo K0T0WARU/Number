@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Number/Renderer/Buffer.h"
+#include "Renderer/Buffer.h"
 
 namespace Number {
 

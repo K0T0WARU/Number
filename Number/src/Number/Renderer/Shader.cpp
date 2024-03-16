@@ -1,8 +1,8 @@
 #include "numpch.h"
 #include "Shader.h"
 
-#include "Number/Renderer/Renderer.h"
-#include "Number/Renderer/RendererAPI.h"
+#include "Renderer/Renderer.h"
+#include "Renderer/RendererAPI.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 #include <glm/glm.hpp>

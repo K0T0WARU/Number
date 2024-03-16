@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Number/Renderer/Texture.h"
+#include "Renderer/Texture.h"
 
 namespace Number {
 

@@ -1,9 +1,9 @@
 #include "numpch.h"
 #include "WindowsWindow.h"
 
-#include "Number/Events/KeyEvent.h"
-#include "Number/Events/MouseEvent.h"
-#include "Number/Events/ApplicationEvent.h"
+#include "Events/KeyEvent.h"
+#include "Events/MouseEvent.h"
+#include "Events/ApplicationEvent.h"
 
 #include "Platform/OpenGL/OpenGLContext.h"
 

@@ -50,6 +50,7 @@ project "Number"
     {
         "%{prj.name}/vendor/spdlog/include",
         "%{prj.name}/src",
+        "%{prj.name}/src/Number",
         "%{IncludeDir.GLFW}",
         "%{IncludeDir.Glad}",
         "%{IncludeDir.ImGui}",
@@ -117,6 +118,7 @@ project "Sandbox"
     {
         "Number/vendor/spdlog/include",
         "Number/src",
+        "Number/src/Number",
         "%{IncludeDir.ImGui}",
         "%{IncludeDir.glm}"
     }

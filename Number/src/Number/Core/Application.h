@@ -1,19 +1,19 @@
 #pragma once
 
-#include "Window.h"
-#include "Number/LayerStack.h"
-#include "Number/Events/Event.h"
-#include "Number/Events/ApplicationEvent.h"
+#include "Core/Window.h"
+#include "Core/LayerStack.h"
+#include "Events/Event.h"
+#include "Events/ApplicationEvent.h"
 
-#include "Number/ImGui/ImGuiLayer.h"
+#include "ImGui/ImGuiLayer.h"
 
-#include "Number/Renderer/Shader.h"
-#include "Number/Renderer/Buffer.h"
-#include "Number/Renderer/VertexArray.h"
+#include "Renderer/Shader.h"
+#include "Renderer/Buffer.h"
+#include "Renderer/VertexArray.h"
 
-#include "Number/Renderer/OrthographicCamera.h"
+#include "Renderer/OrthographicCamera.h"
 
-#include "Number/Core/Timestep.h"
+#include "Core/Timestep.h"
 
 namespace Number {
 
@@ -35,10 +35,12 @@ namespace Number {
 
     private:
         bool OnWindowClosed(WindowCloseEvent& e);
+        bool OnWindowResize(WindowResizeEvent& e);
     private:
         Scope<Window> m_Window;
         ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
+        bool m_Minimized = false;
         LayerStack m_LayerStack;
 
         Timestep m_Timestep;

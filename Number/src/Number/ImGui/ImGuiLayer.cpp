@@ -12,7 +12,7 @@
 
 #include <gl/GL.h>
 
-#include "Number/Application.h"
+#include "Core/Application.h"
 
 namespace Number
 {

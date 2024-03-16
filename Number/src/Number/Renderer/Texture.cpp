@@ -1,7 +1,7 @@
 #include "numpch.h"
 #include "Texture.h"
 
-#include "Number/Renderer/RendererAPI.h"
+#include "Renderer/RendererAPI.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Number {

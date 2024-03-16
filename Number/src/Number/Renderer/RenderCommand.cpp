@@ -1,8 +1,8 @@
 #include "numpch.h"
 #include "RenderCommand.h"
 
-#include "Number/Renderer/VertexArray.h"
-#include "Number/Renderer/RendererAPI.h"
+#include "Renderer/VertexArray.h"
+#include "Renderer/RendererAPI.h"
 #include "Platform/OpenGL/OpenGLRendererAPI.h"
 
 namespace Number {

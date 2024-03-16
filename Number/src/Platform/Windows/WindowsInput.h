@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Number/Input.h"
+#include "Core/Input.h"
 
 namespace Number {
 

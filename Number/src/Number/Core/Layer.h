@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Number/Events/Event.h"
+#include "Events/Event.h"
 
-#include "Number/Core/Timestep.h"
+#include "Core/Timestep.h"
 
 namespace Number {
 

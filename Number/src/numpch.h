@@ -10,6 +10,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <unordered_map>
 
 #ifdef NUM_PLATFORM_WINDOWS
     #include <Windows.h>

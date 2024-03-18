@@ -14,6 +14,7 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+    m_Texture = Number::Texture2D::Create("assets/textures/Goblin.png");
 }
 
 void Sandbox2D::OnDetach()
@@ -28,7 +29,9 @@ void Sandbox2D::OnUpdate(Number::Timestep& timestep)
     Number::RenderCommand::Clear();
 
     Number::Renderer2D::BeginScene(m_CameraController.GetCamera());
-    Number::Renderer2D::DrawQuad(m_SquarePosition, {1.0f, 1.0f}, m_SquareColor);
+    Number::Renderer2D::DrawQuad({ -1.0f, -1.0f }, { 1.0f, 1.0f }, m_SquareColor);
+    Number::Renderer2D::DrawQuad({ 1.0f, 1.0f }, { 2.0f, 2.0f }, { 0.8f, 0.2f, 0.2f, 1.0f });
+    Number::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 2.0f, 2.0f }, m_Texture);
     Number::Renderer2D::EndScene();
 }
 

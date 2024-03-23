@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <functional>
 #include <stdexcept>
+#include <chrono>
 
 #include <sstream>
 #include <string>
@@ -18,3 +19,4 @@
 
 #include "Core/Log.h"
 #include "Core/Core.h"
+#include "Debug/Instrumentor.h"

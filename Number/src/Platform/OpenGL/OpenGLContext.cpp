@@ -15,6 +15,8 @@ namespace Number {
 
     void OpenGLContext::Init()
     {
+        NUM_PROFILE_FUNCTION();
+
         glfwMakeContextCurrent(m_windowHandle);
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         NUM_CORE_ASSERT(status, "Failed to initailize Glad!");

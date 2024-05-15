@@ -7,6 +7,8 @@ namespace Number {
 
     void OpenGLRendererAPI::Init()
     {
+        NUM_PROFILE_FUNCTION();
+        
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -30,6 +32,8 @@ namespace Number {
 
     void OpenGLRendererAPI::DrawIndexed(const Ref<VertexArray>& vertexArray)
     {
+        NUM_PROFILE_FUNCTION();
+        
         glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffers()->GetCount(), GL_UNSIGNED_INT, nullptr);
         glBindTexture(GL_TEXTURE_2D, 0);
     }

@@ -11,6 +11,8 @@
 
 #include "Sandbox2D.h"
 
+
+
 class ExampleLayer : public Number::Layer 
 {
 public:
@@ -116,7 +118,7 @@ public:
     {
         m_CameraController.OnUpdate(timestep);
 
-        /*if (Number::Input::IsKeyPresed(NUM_KEY_D))
+        if (Number::Input::IsKeyPresed(NUM_KEY_D))
             m_SquarePosition.x += m_SquareMoveSpeed * timestep;
         else if (Number::Input::IsKeyPresed(NUM_KEY_A))
             m_SquarePosition.x -= m_SquareMoveSpeed * timestep;
@@ -124,7 +126,7 @@ public:
         if (Number::Input::IsKeyPresed(NUM_KEY_W))
             m_SquarePosition.y += m_SquareMoveSpeed * timestep;
         else if (Number::Input::IsKeyPresed(NUM_KEY_S))
-            m_SquarePosition.y -= m_SquareMoveSpeed * timestep;*/
+            m_SquarePosition.y -= m_SquareMoveSpeed * timestep;
 
         Number::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
         Number::RenderCommand::Clear();

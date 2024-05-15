@@ -88,16 +88,16 @@ namespace Number {
         int m_ProfileCount;
     };
 
-    class InstrumentationTimer
+    class InstrumentorTimer
     {
     public:
-        InstrumentationTimer(const char* name)
+        InstrumentorTimer(const char* name)
             : m_Name(name), m_Stopped(false)
         {
             m_StartTimepoint = std::chrono::high_resolution_clock::now();
         }
 
-        ~InstrumentationTimer()
+        ~InstrumentorTimer()
         {
             if (!m_Stopped)
                 Stop();
@@ -127,7 +127,7 @@ namespace Number {
 #if NUM_PROFILE
     #define NUM_PROFILE_BEGIN_SESSION(name, filepath) ::Number::Instrumentor::Get().BeginSession(name, filepath)
     #define NUM_PROFILE_END_SESSION() ::Number::Instrumentor::Get().EndSession()
-    #define NUM_PROFILE_SCOPE(name) ::Number::InstrumentationTimer timer##__LINE__(name);
+    #define NUM_PROFILE_SCOPE(name) ::Number::InstrumentorTimer timer##__LINE__(name);
     #define NUM_PROFILE_FUNCTION() NUM_PROFILE_SCOPE(__FUNCSIG__)
 #else
     #define NUM_PROFILE_BEGIN_SESSION(name, filepath)

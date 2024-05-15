@@ -24,6 +24,8 @@ namespace Number
 
     void ImGuiLayer::OnAttach()
     {
+        NUM_PROFILE_FUNCTION();
+        
         const char* glsl_version = "#version 430";
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
@@ -48,6 +50,8 @@ namespace Number
     
     void ImGuiLayer::Begin()
     {
+        NUM_PROFILE_FUNCTION();
+
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
@@ -55,12 +59,16 @@ namespace Number
 
     void ImGuiLayer::OnImGuiRender()
     {
+        NUM_PROFILE_FUNCTION();
+
         static bool show = true;
         ImGui::ShowDemoWindow(&show);
     }
 
     void ImGuiLayer::End()
     {
+        NUM_PROFILE_FUNCTION();
+
         ImGui::Render();
 
         Application& app = Application::Get();
@@ -74,6 +82,8 @@ namespace Number
 
     void ImGuiLayer::OnDetach()
     {
+        NUM_PROFILE_FUNCTION();
+
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();
         ImGui::DestroyContext();

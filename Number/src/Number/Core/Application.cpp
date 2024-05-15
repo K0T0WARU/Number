@@ -18,7 +18,7 @@ namespace Number {
         NUM_CORE_ASSERT(!s_Instance, "Application already exists");
         s_Instance = this;
 
-        m_Window = Scope<Window>(Window::Create()); 
+        m_Window = Window::Create(); 
         m_Window->SetEventCallback(NUM_BIND_EVENT_FN(Application::OnEvent));
 
         Renderer::Init();
@@ -45,6 +45,8 @@ namespace Number {
 
     void Application::OnEvent(Event& e)
     {
+        NUM_PROFILE_FUNCTION();
+
         EventDispatcher dispatcher(e);
         dispatcher.Dispatch<WindowCloseEvent>(NUM_BIND_EVENT_FN(Application::OnWindowClosed));
         dispatcher.Dispatch<WindowResizeEvent>(NUM_BIND_EVENT_FN(Application::OnWindowResize));
@@ -58,22 +60,32 @@ namespace Number {
     }
  
 	void Application::Run() {
+        NUM_PROFILE_FUNCTION();
+        
         while (m_Running)
         {
+            NUM_PROFILE_SCOPE("Run Loop");
+
             m_CurrentTime = Platform::GetTime();
             m_Timestep = m_CurrentTime - m_LastFrameTime;
             m_LastFrameTime = m_CurrentTime;
 
             if (!m_Minimized)
             {
-                for (Layer* layer : m_LayerStack)
-                    layer->OnUpdate(m_Timestep);
-            }
+                {
+                    NUM_PROFILE_SCOPE("LayerStack OnUpdate");
+                    for (Layer* layer : m_LayerStack)
+                        layer->OnUpdate(m_Timestep);
+                }
 
-            m_ImGuiLayer->Begin();
-            for (Layer* layer : m_LayerStack)
-                layer->OnImGuiRender();
-            m_ImGuiLayer->End();
+                m_ImGuiLayer->Begin();
+                {
+                    NUM_PROFILE_SCOPE("LayerStack ImGuiRender");
+                    for (Layer* layer : m_LayerStack)
+                        layer->OnImGuiRender();
+                }
+                m_ImGuiLayer->End();
+            }
 
             m_Window->OnUpdate();
         }
@@ -87,6 +99,8 @@ namespace Number {
 
     bool Application::OnWindowResize(WindowResizeEvent& e)
     {
+        NUM_PROFILE_FUNCTION();
+
         if (e.GetWidth() == 0 || e.GetHeight() == 0)
         {
             m_Minimized = true;
